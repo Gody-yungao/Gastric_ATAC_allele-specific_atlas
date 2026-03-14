@@ -80,5 +80,5 @@ p <- ggplot(data, aes(x = 1, y = Freq, fill = Var1)) +   # x 改为常数 1
   )
 ggsave(p,
        filename="95sample_IterativeOverlapPeakSet.UCSC_hg19_known_gene.anno_by_chipseeker.genomic_anno_distribution.pieplot.pdf",
-       width=6,height=5)
+       width=6,height=5) ##Figure1B
 q() 
