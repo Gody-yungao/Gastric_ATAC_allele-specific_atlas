@@ -36,9 +36,9 @@ random_bg_df_sorted <- random_bg_df[
          random_bg_df$start                         
   ),  
 ]  
-#write.table(random_bg_df_sorted, file="/data1/gy/ATACseq_RWAS/ATACseq/macs2/iterative_peak_filtering/7.combined_extend_peak_501bp_rmBlacklist_Iteratively_filter_Nomarlized_Iteratively_filter_2rep_SPM4/95sample/95sample_IterativeOverlapPeakSet.bg_random.sort.bed", 
-#            quote=FALSE, sep="\t", col.names=FALSE, row.names=FALSE)
-#
+write.table(random_bg_df_sorted, file="/data1/gy/ATACseq_RWAS/ATACseq/macs2/iterative_peak_filtering/7.combined_extend_peak_501bp_rmBlacklist_Iteratively_filter_Nomarlized_Iteratively_filter_2rep_SPM4/95sample/95sample_IterativeOverlapPeakSet.bg_random.sort.bed", 
+            quote=FALSE, sep="\t", col.names=FALSE, row.names=FALSE)
+
 state_mapping1 <- c(  
   '2' = 'Active TSS',  
   '1' = 'Flanking active TSS',  
@@ -187,9 +187,9 @@ table(OCR_anno_with_state_NJMU$state_name1)
 #              13895                6940                9880                4054 
 #      Weak enhancer 
 #              11498 
-#fwrite(OCR_anno_with_state_NJMU,
-#       "/data1/gy/ATACseq_RWAS/ATACseq/macs2/iterative_peak_filtering/7.combined_extend_peak_501bp_rmBlacklist_Iteratively_filter_Nomarlized_Iteratively_filter_2rep_SPM4/95sample/chromHMM_overlap/95sample_IterativeOverlapPeakSet.NJMU_chromHMM_state.txt",
-#       sep="\t",quote=F,col.names=T,row.names=F)
+fwrite(OCR_anno_with_state_NJMU,
+       "/data1/gy/ATACseq_RWAS/ATACseq/macs2/iterative_peak_filtering/7.combined_extend_peak_501bp_rmBlacklist_Iteratively_filter_Nomarlized_Iteratively_filter_2rep_SPM4/95sample/chromHMM_overlap/95sample_IterativeOverlapPeakSet.NJMU_chromHMM_state.txt",
+       sep="\t",quote=F,col.names=T,row.names=F)
 
 ##bg
 df_annot_bg_with_state_NJMU <- data.frame(  
