@@ -16,7 +16,7 @@ peak_Anno <- annotatePeak(peak,
                           TxDb=TxDb.Hsapiens.UCSC.hg19.knownGene)
 peak_Anno_df = as.data.frame(peak_Anno)
 peak_Anno_df$V4=paste0(peak_Anno_df$seqnames,":",peak_Anno_df$start,"-",peak_Anno_df$end)
-#write.table(peak_Anno_df,"/data1/gy/ATACseq_RWAS/ATACseq/macs2/iterative_peak_filtering/7.combined_extend_peak_501bp_rmBlacklist_Iteratively_filter_Nomarlized_Iteratively_filter_2rep_SPM4/95sample/95sample_IterativeOverlapPeakSet.UCSC_hg19_known_gene.anno_by_chipseeker.txt",col.names=T,row.names=F,quote=F,sep="\t")
+write.table(peak_Anno_df,"/data1/gy/ATACseq_RWAS/ATACseq/macs2/iterative_peak_filtering/7.combined_extend_peak_501bp_rmBlacklist_Iteratively_filter_Nomarlized_Iteratively_filter_2rep_SPM4/95sample/95sample_IterativeOverlapPeakSet.UCSC_hg19_known_gene.anno_by_chipseeker.txt",col.names=T,row.names=F,quote=F,sep="\t")
 
 ###genomic anno
 library(dplyr)
@@ -62,8 +62,8 @@ data$Var1=factor(data$Var1,levels=c("Exon","Promoter","5'UTR","Intron","3'UTR","
 
 library(ggplot2)
 
-p <- ggplot(data, aes(x = 1, y = Freq, fill = Var1)) +   # x 改为常数 1
-  geom_col(width = 1, color = "white") +                  # 宽度 1 即填满中心
+p <- ggplot(data, aes(x = 1, y = Freq, fill = Var1)) +
+  geom_col(width = 1, color = "white") +
   coord_polar(theta = "y") +
   scale_fill_manual(values = class_colors,
                     guide = guide_legend(reverse = FALSE)) +
