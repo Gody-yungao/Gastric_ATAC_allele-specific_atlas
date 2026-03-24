@@ -202,6 +202,7 @@ library(ggplot2)
 #install.packages("ggridges",repos = c(CRAN="https://mirrors.bfsu.edu.cn/CRAN/"))   
 library(ggridges)
 setwd("/data1/gy/ATAC_for_review/Figure2A&FigureS5A/output")
+
 ######################################
 ##########1.7 major factors###########Figure2A
 ######################################
@@ -253,9 +254,9 @@ ggsave(p,file="/95sample_peakset.PVE_distribution.7main_vars.ridge_plot.pdf", he
 vars=colnames(importances)[!(colnames(importances) %in% c("age_group","sex","HP_C14","Gastric_lesion_status","smoke_status","drink_status","Tea_consumption"))]
 data=cbind(ID=rownames(importances),importances)
 data=data[,c("ID",vars)]
-# 转换为长格式  
+#
 long_data <- melt(data, id.vars = "ID", variable.name = "variable", value.name = "value")  
-#颜色设置
+#
 custom_colors <- c(
   "#8DD3C7",
   "#BEBADA",
