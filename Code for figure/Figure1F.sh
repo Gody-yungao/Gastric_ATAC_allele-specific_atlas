@@ -15,8 +15,6 @@ dim(stomach_peak_anno)
 #[1] 9598    5
 ##
 stomach_gene=unique(stomach_peak_anno$geneId)
-length(stomach_gene)
-#[1] 4868
 
 #####################pathway enrichment
 library(msigdbr)
