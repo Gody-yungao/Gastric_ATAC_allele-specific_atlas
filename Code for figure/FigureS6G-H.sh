@@ -16,9 +16,9 @@
 #Annotation Number 1
 #Random Seed 1
 
-################################
-#######2.input SNP bed文件######
-################################
+#################################
+#######2.input SNP bed file######
+#################################
 /Public/gaoyun/software/R-4.2.0/bin/R
 library(data.table)
 library(dplyr)
