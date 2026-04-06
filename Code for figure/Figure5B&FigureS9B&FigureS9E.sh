@@ -105,7 +105,7 @@ ggsave(p,filename="RWAS_sig_peaks.coloc_result.manhattan.pdf",width=7.5,height=4
 q()
 
 ########################################
-#####3.manhatton plot(RWAS P-value)#####Figure5B
+#####2.manhatton plot(RWAS P-value)#####Figure5B
 ########################################
 /Public/gaoyun/software/R-4.2.0/bin/R
 setwd("/data1/gy/ATAC_for_review/Figure5B&FigureS9B&FigureS9E/output")
