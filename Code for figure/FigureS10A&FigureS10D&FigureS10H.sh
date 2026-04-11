@@ -95,7 +95,7 @@ hyprcoloc1 = hyprcoloc[which((hyprcoloc$Allele1 == hyprcoloc$REF & hyprcoloc$All
                           | (hyprcoloc$Allele1 == hyprcoloc$ALT & hyprcoloc$Allele2 == hyprcoloc$REF)),]
 dim(hyprcoloc1)
 #[1] 840  16
-#######筛选caQTL和GWAS不相同的SNP
+#######
 hyprcoloc2 = hyprcoloc[!which((hyprcoloc$Allele1 == hyprcoloc$REF & hyprcoloc$Allele2 == hyprcoloc$ALT) 
                           | (hyprcoloc$Allele1 == hyprcoloc$ALT & hyprcoloc$Allele2 == hyprcoloc$REF)),]
 dim(hyprcoloc2)
@@ -103,7 +103,7 @@ dim(hyprcoloc2)
 hyprcoloc = hyprcoloc1
 dim(hyprcoloc)
 #[1] 840  16
-##添加LD
+##
 hyprcoloc=merge(hyprcoloc,LDr2,by.x="caqtlID",by.y="SNP_B")
 dim(hyprcoloc)
 #[1] 840  18
