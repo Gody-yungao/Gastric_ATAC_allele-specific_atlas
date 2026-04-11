@@ -5,9 +5,9 @@ mkdir -p /data1/gy/ATACseq_RWAS/GC_candidate_region_final_STITCH/chr4:48072992-4
 /Public/gaoyun/software/R-4.2.0/bin/R
 library(data.table)
 library(dplyr)
-############################################################
-#############1.create caQTL sceQTL GWAS SNPlist#############
-############################################################
+##########################################################
+#############1.create caQTL eQTL GWAS SNPlist#############
+##########################################################
 #######caqtl
 peakID="chr4:48072992-48073492"
 caqtl=fread("/data1/gy/ATACseq_RWAS/caQTL_STITCH/caQTL_model_result/TMM_exp/15.sex_age_Hp_PC1_5_peer1_7/200kb_nominal/95sample_caQTL_200kb_nominal_result.withFDR.txt")
