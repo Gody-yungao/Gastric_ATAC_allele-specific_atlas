@@ -1,8 +1,6 @@
 #################################
 ###########FigureS10F############
 #################################
-mkdir -p /data1/gy/ATACseq_RWAS/GC_candidate_region_final_STITCH/chr4:48072992-48073492/GWAS_forestplot
-#
 /Public/gaoyun/software/R-4.2.0/bin/R
 library(data.table)
 library(dplyr)
