@@ -1,5 +1,5 @@
 ###################################################
-##########OCR_accessibility_calculation############
+##########OCR accessibility calculation############
 ###################################################
 ####saf file
 /Public/gaoyun/software/R-4.2.0/bin/R
