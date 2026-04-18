@@ -45,7 +45,7 @@ y = DGEList(counts=counts[,7:101],genes=counts$Geneid)
 y = calcNormFactors(y, method = "TMM")
 y$samples$lib.size = colSums(y$counts)
 results1 = (t( t(y$counts) / y$samples$lib.size / y$samples$norm.factors)) * 1000000
-results2 = edgeR::cpm(y,log = F) 
+results2 = edgeR::cpm(y,log = F) ##results1=results2
 write.table(cbind(counts[,1:6],results1),"/data1/gy/ATACseq_RWAS/ATACseq/peak_exp/95sample/TMM/95sample_IterativeOverlapPeakSet.final.TMM",row.names = F,col.names = T,quote=F,sep = "\t")
 write.table(cbind(counts[,1:6],log2(results1+1)),"/data1/gy/ATACseq_RWAS/ATACseq/peak_exp/95sample/TMM/95sample_IterativeOverlapPeakSet.final.log2TMM",row.names = F,col.names = T,quote=F,sep = "\t")
 
