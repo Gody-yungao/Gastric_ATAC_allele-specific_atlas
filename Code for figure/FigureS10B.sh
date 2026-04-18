@@ -112,3 +112,4 @@ GWASp1 <- GWASp0 +
   coord_cartesian(clip = "off")
 ggsave(GWASp1,filename="chr4:48072992-48073492.loc_1.cond.scatterplot.pdf",
        width=4,height=2.5) ##FigureS10B
+q()
