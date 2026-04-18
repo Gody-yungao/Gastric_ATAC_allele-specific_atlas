@@ -114,14 +114,13 @@ cat 95sample_caQTL_1MB_permutation_result.txt | sed s/" "/"\t"/g | gzip -c >> 95
 ###########ii.1MB permutation result (FDR<0.1)###########
 #########################################################
 cd /data1/gy/ATACseq_RWAS/caQTL_STITCH/caQTL_model_result/TMM_exp/23.sex_age_Hp_PC1_5_peer1_15/1MB_permutation
-####I.FDR adjustment of permutation-based p-values for chromatin QTLs
-####usage> Rscript runFDR.R INPUT FDR OUTPUT
+####I.FDR adjustment of permutation-based p-values for caQTLs
 /Public/gaoyun/software/R-4.2.0/bin/Rscript /data1/gy/code/cwas_script/qtltools-runFDR_cis.R \
 95sample_caQTL_1MB_permutation_result.tsv.gz \
 0.1 \
 95sample_caQTL_1MB_permutation_result
+
 ####II.check the beta approximation used by qtltools
-####usage> Rscript qtltools-check_beta_approx.R INPUT_FILE OUTPUT
 /Public/gaoyun/software/R-4.2.0/bin/Rscript /data1/gy/code/cwas_script/qtltools-check_beta_approx.R \
 95sample_caQTL_1MB_permutation_result.tsv.gz \
 95sample_caQTL_1MB_permutation_result
