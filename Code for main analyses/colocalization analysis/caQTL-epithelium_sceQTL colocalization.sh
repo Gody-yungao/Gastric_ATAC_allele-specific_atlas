@@ -396,7 +396,7 @@ sceQTL_coloc_num <- sum(!is.na(merged_data$Distance_sceQTL))
 message(paste0("Epithelium sceQTL coloc num = ", sceQTL_coloc_num))
 #Epithelium sceQTL coloc num = 149
 
-#############
+#############final
 output_path <- paste0(
   "/data1/gy/ATACseq_RWAS/colocalization_final_262_STITCH/caQTL_sceQTL_coloc_celltype_specific_OCR/",
   "epi_caQTL_sceQTL_eQTL_coloc_200kb_1MB_PPH4_0.5.chr1_22.csv"
