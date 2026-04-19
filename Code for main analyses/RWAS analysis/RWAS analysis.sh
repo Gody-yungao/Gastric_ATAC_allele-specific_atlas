@@ -293,7 +293,7 @@ m = subset(m, !is.na(MODELCV.PV) & !is.na(BEST.GWAS.Z))
 
 ##retain only models with CV p-value < 0.05, and for each OCR, keep only the model with the lowest CV p-value
 m.cvsig = subset(m,MODELCV.PV < 0.05)
-m.cvsig = m.cvsig %>% group_by(ID) %>% slice(which.min(MODELCV.PV))
+m.cvsig = m.cvsig %>% group_by(ID) %>% slice(which.min(MODELCV.PV)) #OCRs with multiple models were reduced to the single model with the most significant cross-validation P value
 
 ##FDR correction and significant RWAS OCR (FDR<0.1)
 m.cvsig$TWAS.fdr=p.adjust(m.cvsig$TWAS.P,method="BH")
