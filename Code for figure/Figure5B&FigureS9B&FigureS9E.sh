@@ -5,7 +5,9 @@
 #####1.manhatton plot(coloc PP4)#####FigureS9E
 #####################################
 /Public/gaoyun/software/R-4.2.0/bin/R
-setwd("/data1/gy/ATAC_for_review/Figure5B&FigureS9B&FigureS9E/output")
+suppressMessages(library(data.table))
+suppressMessages(library(dplyr))
+suppressMessages(library(ggplot2))
 library(ggplot2)
 library(magrittr)
 library(tidyr)
@@ -13,7 +15,7 @@ library(dplyr)
 library(ggrepel)
 library(data.table)
 library(cowplot)
-smy_all = read.csv('/data1/gy/ATACseq_RWAS/RWAS_STITCH/fusion/output/GC_GWAS/merged_filter/sig/coloc/RWAS_sig_peaks.coloc_result.csv')
+smy_all = read.csv('/data1/gy/ATACseq_RWAS/RWAS_STITCH/caQTL_GWAS_coloc/coloc.abf_result/RWAS_sig_Peak.caQTL_GWAS_coloc_200kb_withRegion_PPH4.chr1_22.with_rsID.csv')[,-c(2:3)]
 Peak = data.frame(fread('/data1/gy/ATACseq_RWAS/caQTL_STITCH/exp/95sample_IterativeOverlapPeakSet.final.TMM_qnorm.bed.gz'))
 Peak$X.Chr=substr(Peak$X.Chr,4,nchar(Peak$X.Chr))
 #
@@ -22,22 +24,23 @@ coloc = coloc[which(coloc$HitSNP >= 30),]
 coloc$order = 1:nrow(coloc)
 #
 Peak = Peak[,c('X.Chr','Geneid','Start','End')]
-coloc = merge(coloc,Peak,by.x='ID',by.y='Geneid')
+coloc = merge(coloc,Peak,by.x='Peak',by.y='Geneid')
 #
-d = coloc[,c('CHR','P0','P1','ID','PPH4','HitSNP')]
+d = coloc[,c('X.Chr','Start','End','Peak','PPH4','HitSNP')]
+colnames(d)[1] = 'CHR'
 
 #hg19
 hg19_size=fread("/data1/gy/public/genome/hg19/hg19.chrom.sizes")
 hg19_autosomes <- hg19_size[
-  grepl("^chr[0-9]+$", V1) 
+  grepl("^chr[0-9]+$", V1)
 ][
-  order(as.numeric(sub("chr", "", V1))) 
+  order(as.numeric(sub("chr", "", V1)))
 ]
 #
 hg19_autosomes$CHR <- as.numeric(sub("chr", "", hg19_autosomes$V1))
 
 #
-hg19_autosomes$V2 <- as.numeric(hg19_autosomes$V2) 
+hg19_autosomes$V2 <- as.numeric(hg19_autosomes$V2)
 hg19_autosomes$cumlen <- cumsum(hg19_autosomes$V2)
 hg19_autosomes$offset <- c(0, head(hg19_autosomes$cumlen, -1))
 
@@ -53,20 +56,21 @@ ticklim <- c(0, max(hg19_autosomes$cumlen))
 #
 d <- d %>%
   dplyr::filter(CHR %in% 1:22) %>%
-  dplyr::arrange(CHR, P0)
+  dplyr::arrange(CHR, Start)
 
-# 
+#
+d$CHR=as.numeric(d$CHR)
 d <- d %>%
   dplyr::left_join(hg19_autosomes[, c("CHR","offset")], by="CHR") %>%
-  dplyr::mutate(pos = P0 + offset)
+  dplyr::mutate(pos = Start + offset)
 
-#
+##
 d_pos<-d[d$PPH4 >= 0.5,]
-	
-#
+
+##
 chr_labs<-as.character(unique(d$CHR))
 
-#
+##
 ylimit=1
 
 ###################################plot
@@ -75,7 +79,7 @@ p <- ggplot(d, aes(x = pos, y = PPH4)) +
              aes(fill = "#f08e59"           
                  ,   
              size = HitSNP),
-             colour = "black", shape = 21) + 
+             colour = "black", shape = 21) +
   scale_x_continuous(name = "Chromosome", breaks = ticks, labels = c(1:22), expand = c(0.01, 0.01)) +  
   scale_y_continuous(  
     name = "PP4",
@@ -87,8 +91,8 @@ p <- ggplot(d, aes(x = pos, y = PPH4)) +
   scale_fill_identity()
 
 ##add label
-p<-p+geom_text_repel(data=d_pos, aes(x=pos,y=PPH4, label=ID), colour='black', nudge_y=0.03, size=2.5, force=5, segment.alpha=0.25)
-	
+p<-p+geom_text_repel(data=d_pos, aes(x=pos,y=PPH4, label=Peak), colour='black', nudge_y=0.03, size=2.5, force=5, segment.alpha=0.25)
+
 ##
 p <- p +   
   theme_cowplot() +  
