@@ -76,9 +76,7 @@ ylimit=1
 ###################################plot
 setwd("/data1/gy/ATAC_for_review/Figure5B&FigureS9B&FigureS9E/output")
 p <- ggplot(d, aes(x = pos, y = PPH4)) +  
-  geom_point(
-             aes(fill = "#f08e59"           
-                 ,   
+  geom_point(aes(fill = "#f08e59",   
              size = HitSNP),
              colour = "black", shape = 21) +
   scale_x_continuous(name = "Chromosome", breaks = ticks, labels = c(1:22), expand = c(0.01, 0.01)) +  
