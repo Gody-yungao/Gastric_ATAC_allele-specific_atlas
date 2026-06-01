@@ -319,5 +319,3 @@ write.table(m.cvsig.fdr.sig,
             "/data1/gy/ATACseq_RWAS/RWAS_STITCH/fusion/output/GC_GWAS/merged_filter/sig/RWAS.fdr0.1.sig.result.with_caOCR_asOCR_anno.txt",
             sep="\t", quote=FALSE, row.names=FALSE, col.names=TRUE)
 q()
-write.csv(smy_all_df_0.5,'/data1/gy/ATACseq_RWAS/RWAS_STITCH/caQTL_GWAS_coloc/coloc.abf_result/RWAS_sig_Peak.caQTL_GWAS_coloc_200kb_withRegion_PPH4_0.5.csv',quote=F,row.names=F)
-q()
